@@ -1,26 +1,25 @@
 import math
 class LojaDeTintas:
-    def __init__(self, area):
+    area = 0
+    litros = 0
+    litros_latas = 18
+    quant_lata = 0
+    precoTintas = 80
+    precoTotal = 0
+
+    def calcular(self, area):
         self.area = area
-        self.litros = self.calcular_Litros()
-        self.latasDeTintas = self.calcular_Latas()
-        self.precoTintas = self.calcular_precoTintas()
-
-    def calcular_Litros(self):
-            return self.area /3
-
-    def calcular_Latas(self):
-            return math.ceil(self.calcular_Litros() / 18)
-
-    def calcular_precoTintas(self):
-            return self.calcular_Latas() * 80
+        self.litros = math.ceil(self.area / 3)
+        self.quant_lata = math.ceil(self.litros / self.litros_latas)
+        self.precoTotal = self.quant_lata * self.precoTintas
 
     def mostrar_resultado(self):
-            print("Quantidade de latas de tintas: ", self.latasDeTintas)
-            print("Preço total: ", self.precoTintas)
+         print("Quantidade de litros:", self.litros)
+         print("Quantidade de latas de tintas:", self.quant_lata)
+         print("Preço total:", self.precoTotal)
 
-area = float(input("Digite a área a ser pintada : "))
-loja = LojaDeTintas(area)
+loja = LojaDeTintas()
+loja.calcular(float(input("Digite a área a ser pintada: ")))
 loja.mostrar_resultado()
 
 
